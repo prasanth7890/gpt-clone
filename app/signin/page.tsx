@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from 'next/navigation'
 
 export default function SignIn2() {
   const [email, setEmail] = useState<string>();
   const [password, setpassword] = useState<string>();
+  const router = useRouter();
 
   async function handlesubmit() {
     const response = await fetch("http://localhost:5000/signin", {
@@ -17,7 +19,9 @@ export default function SignIn2() {
     });
 
     const res = await response.json();
-    console.log(res);
+    if(res?.success) {
+      router.push('/chat');
+    }
   }
 
   return (
