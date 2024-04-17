@@ -11,9 +11,7 @@ export default function Home() {
         type="text"
         placeholder="Enter your text"
       />
-      <Skeleton>
         <button>Submit</button>
-      </Skeleton>
     </div>
   );
 }

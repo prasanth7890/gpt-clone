@@ -1,6 +1,18 @@
 import ChatTitle from "./ChatTitle"
 
-export default function Sidebar() {
+async function getAllChats() {
+    const response = await fetch('http://localhost:5000/chats',{
+        method: 'GET',
+        credentials: 'include',
+    })
+    
+    const result = await response.json();
+    console.log(result);
+}
+
+export default async function Sidebar() {
+    await getAllChats();
+
     return <div>
         <div className="w-0 md:w-[280px] h-screen bg-black">
         <div className="pt-1 pb-1 hover:bg-gray-800 cursor-pointer">
