@@ -1,9 +1,9 @@
 "use server";
 
 import { cookies } from "next/headers";
+const cookieStore = cookies();
 
 export async function getAllChats() {
-  const cookieStore = cookies();
   const token = cookieStore.get("gpt-token");
 
   const response = await fetch("http://localhost:5000/chats", {
@@ -12,6 +12,7 @@ export async function getAllChats() {
     headers: {
       Cookie: `gpt-token=${token?.value}`,
     },
+    cache: 'no-store'
   });
 
   const result = await response.json();
@@ -35,4 +36,23 @@ export async function Login(formData: FormData) {
 
   const res = await response.json();
   console.log(res);
+}
+
+export async function createNewChat() {
+  try {
+    const token = cookieStore.get("gpt-token");
+    const response = await fetch('http://localhost:5000/chat', {
+      credentials: 'include',
+      headers: {
+        Cookie: `gpt-token=${token?.value}`,
+      },
+    })
+  
+    const res = await response.json();
+    if(res.success) {
+      return res.chatId;
+    }
+  } catch (error) {
+    console.log(error);    
+  }
 }

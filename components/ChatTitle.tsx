@@ -1,7 +1,7 @@
 "use client";
 
 import { useSetRecoilState } from "recoil";
-import { chatState } from "@/lib/store";
+import { chatState, chatId } from "@/lib/store";
 
 type props = {
   title: string;
@@ -9,6 +9,7 @@ type props = {
 
 export default function ChatTitle({ title }: props) {
   const setchatState = useSetRecoilState(chatState);
+  const setChatId = useSetRecoilState(chatId);
 
   async function handleClick(title: string) {
     const response = await fetch(`http://localhost:5000/chat/${title}`, {
@@ -19,6 +20,7 @@ export default function ChatTitle({ title }: props) {
   
     const result = await response.json();
     setchatState(result?.history);
+    setChatId(title);
   }
 
   return (

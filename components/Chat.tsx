@@ -5,11 +5,11 @@ import { useState } from "react";
 import MessageBox from "./MessageBox";
 import { chatHistoryType } from "@/lib/dummyData";
 import { useRecoilValue } from "recoil";
-import { chatState } from "@/lib/store";
+import { chatId, chatState } from "@/lib/store";
 
-async function getData(input: string) {
+async function getData(input: string, currchatId: string) {
   const response = await fetch(
-    "http://localhost:5000/chat/661f9cdf1cd12c8ee1f8a771",
+    `http://localhost:5000/chat/${currchatId}`,
     {
       method: "POST",
       headers: {
@@ -28,6 +28,7 @@ export default function ChatPage() {
   const [input, setInput] = useState<string>("");
   const [chatHistory, setChatHistory] = useState<chatHistoryType[]>([]);
   const state = useRecoilValue(chatState);
+  const currchatId = useRecoilValue(chatId);
 
   useMemo(() => setChatHistory(state), [state]);
 
@@ -40,7 +41,7 @@ export default function ChatPage() {
         ]);
         setInput("");
         try {
-          const res = await getData(input);
+          const res = await getData(input, currchatId);
           setChatHistory((chatHistory) => [
             ...chatHistory,
             { role: "model", message: res },
