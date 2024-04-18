@@ -25,7 +25,7 @@ export default function ChatTitle({ title }: props) {
 
   return (
     <div
-      className="h-14 w-[279px] hover:bg-blue-400 hover:text-black text-white text-left rounded-lg cursor-pointer"
+      className="h-14 w-[279px] hover:bg-[#6366f0] text-white text-left rounded-lg cursor-pointer"
       onClick={() => handleClick(title)}
     >
       <p className="p-4 truncate">{title}</p>

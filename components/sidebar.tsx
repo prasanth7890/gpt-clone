@@ -7,7 +7,7 @@ export default async function Sidebar() {
   
   return (
     <div>
-      <div className="w-0 md:w-[280px] h-screen bg-black">
+      <div className="w-0 md:w-[280px] h-screen bg-[#131411]">
         <div className="pt-1 pb-1 hover:bg-gray-800 cursor-pointer">
           <Logo/>
         </div>

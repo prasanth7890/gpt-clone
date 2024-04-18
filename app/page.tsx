@@ -1,6 +1,5 @@
 'use client'
 
-import Skeleton from "@/components/skeleton";
 
 export default function Home() {
 

@@ -54,9 +54,8 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="h-screen w-full bg-yellow-200 overflow-y-scroll">
+    <div className="h-screen w-full bg-[#27242c] overflow-y-scroll">
       <div className="relative w-[70%] h-auto ml-[15%] mt-16 mb-[50px]">
-        <Suspense fallback={<div>Loading...</div>}>
           {chatHistory.map((message, key) => {
             return (
               <MessageBox
@@ -66,13 +65,12 @@ export default function ChatPage() {
               />
             );
           })}
-        </Suspense>
       </div>
       <div className="sticky bottom-10 top-[600px] w-[70%] ml-[15%] mt-2">
         <input
           type="text"
           placeholder="Message GPT..."
-          className="h-14 w-full"
+          className="h-12 w-full bg-[#131411] p-2 rounded-md text-white focus:outline-none"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => handleSubmit(e)}
