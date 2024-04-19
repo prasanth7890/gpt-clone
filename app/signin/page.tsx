@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { useRouter } from 'next/navigation'
+import { useSetRecoilState } from "recoil";
+import { userName } from "@/lib/store";
 
 export default function SignIn() {
-  const [email, setEmail] = useState<string>();
+  const [email, setEmail] = useState<string>("");
   const [password, setpassword] = useState<string>();
+  const setUserName = useSetRecoilState(userName);
   const router = useRouter();
 
   async function handlesubmit() {
@@ -20,6 +23,8 @@ export default function SignIn() {
 
     const res = await response.json();
     if(res?.success) {
+      const username:string = email?.split('@')[0];
+      setUserName(username);
       router.push('/chat');
     }
   }
