@@ -8,7 +8,7 @@ export default function Logo() {
     }
 
   return (
-    <div className="flex justify-baseline justify-start items-center" onClick={handleClick}>
+    <div className="flex justify-baseline justify-start items-center bg-[#131411]" onClick={handleClick}>
       <img
         src="https://www.edigitalagency.com.au/wp-content/uploads/chatgpt-logo-white-on-transparent-background-png-300x300.png"
         alt="openai"
