@@ -48,15 +48,15 @@ export default function SignIn() {
           <input
             className="bg-[#131411] rounded-md p-1 pl-2 mb-2 placeholder:text-xs focus:outline-none"
             name="password"
-            type="text"
+            type="password"
             placeholder="............"
             onChange={(e) => setpassword(e.target.value)}
           />
-        <button onClick={handlesubmit} className="bg-blue-400 rounded-md p-2 mt-1 text-slate-50 w-[100%] text-xs">
+        <button onClick={handlesubmit} className="bg-[#6366f0] hover:bg-[#5658cf] rounded-md p-2 mt-1 text-slate-50 w-[100%] text-xs">
           Sign In
         </button>
         </div>
-        <span className="text-xs">Don't have an account? <Link href="/signup" className="text-blue-500">SignUp</Link></span>
+        <span className="text-xs">Don't have an account? <Link href="/signup" className="text-[#6366f0]">SignUp</Link></span>
       </div>
     </div>
   );

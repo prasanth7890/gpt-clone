@@ -43,14 +43,14 @@ export default async function Signup() {
             Password
           </label>
           <input
-            type="text"
+            type="password"
             placeholder="Password"
             name="password"
             className="bg-[#131411] rounded-md p-1 pl-2 mb-2 placeholder:text-xs focus:outline-none"
           />
-          <button type="submit" className="bg-blue-400 rounded-md p-2 mt-1 text-white w-[100%] text-xs">Sign Up</button>
+          <button type="submit" className="bg-[#6366f0] hover:bg-[#5658cf] rounded-md p-2 mt-1 text-white w-[100%] text-xs">Sign Up</button>
         </form>
-        <span className="text-xs m-1">Already had an account? <Link href="/signin" className="text-blue-500">SignIn</Link></span>
+        <span className="text-xs m-1">Already had an account? <Link href="/signin" className="text-[#6366f0]">SignIn</Link></span>
       </div>
     </div>
   );
