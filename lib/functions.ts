@@ -2,9 +2,9 @@
 
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
-const cookieStore = cookies();
 
 export async function getAllChats() {
+  const cookieStore = cookies();
   const token = cookieStore.get("gpt-token");
 
   const response = await fetch("http://localhost:5000/chats", {
@@ -42,6 +42,7 @@ export async function Login(formData: FormData) {
 
 export async function createNewChat() {
   try {
+    const cookieStore = cookies();
     const token = cookieStore.get("gpt-token");
     const response = await fetch('http://localhost:5000/chat', {
       credentials: 'include',

@@ -1,6 +1,7 @@
 'use client'
 
 import { createNewChat } from "@/lib/functions";
+import Image from "next/image";
 
 export default function Logo() {
     async function handleClick() {
@@ -9,11 +10,11 @@ export default function Logo() {
 
   return (
     <div className="flex justify-baseline justify-start items-center bg-[#131411]" onClick={handleClick}>
-      <img
-        src="https://www.edigitalagency.com.au/wp-content/uploads/chatgpt-logo-white-on-transparent-background-png-300x300.png"
-        alt="openai"
-        height={"60px"}
-        width={"50px"}
+      <Image
+        src='/gptlogo.png'
+        alt="openai logo"
+        height={60}
+        width={50}
       />
       <div className="text-white h-10 ml-[-10px] pt-2 pl-2 pr-2 text-left">
         New Chat

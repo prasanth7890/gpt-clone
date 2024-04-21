@@ -58,7 +58,7 @@ export default function SignIn() {
           Sign In
         </button>
         </div>
-        <span className="text-xs">Don't have an account? <Link href="/signup" className="text-[#6366f0]">SignUp</Link></span>
+        <span className="text-xs">Don&apos;t have an account? <Link href="/signup" className="text-[#6366f0]">SignUp</Link></span>
       </div>
     </div>
   );
