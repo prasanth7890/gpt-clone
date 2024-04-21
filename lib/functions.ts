@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 const cookieStore = cookies();
 
@@ -12,7 +13,8 @@ export async function getAllChats() {
     headers: {
       Cookie: `gpt-token=${token?.value}`,
     },
-    cache: 'no-store'
+    cache: 'no-store',
+    next: {tags: ['alluserchats']}
   });
 
   const result = await response.json();
@@ -50,6 +52,7 @@ export async function createNewChat() {
   
     const res = await response.json();
     if(res.success) {
+      revalidateTag('alluserchats');
       return res.chatId;
     }
   } catch (error) {

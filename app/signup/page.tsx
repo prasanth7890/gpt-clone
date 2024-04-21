@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
+// TODO - ADD Toast to show when succesfull signin and if not error
+
 export default async function Signup() {
   async function handleSubmit(formData: FormData) {
     "use server";
