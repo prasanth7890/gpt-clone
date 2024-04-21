@@ -12,12 +12,15 @@ export default function ChatTitle({ title }: props) {
   const setChatId = useSetRecoilState(chatId);
 
   async function handleClick(title: string) {
-    const response = await fetch(`http://localhost:5000/chat/${title}`, {
-      method: "GET",
-      credentials: "include",
-      cache: "no-store",
-    });
-  
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL as string}/chat/${title}`,
+      {
+        method: "GET",
+        credentials: "include",
+        cache: "no-store",
+      }
+    );
+
     const result = await response.json();
     setchatState(result?.history);
     setChatId(title);

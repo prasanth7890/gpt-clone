@@ -9,13 +9,16 @@ export default async function Signup() {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    const response = await fetch("http://localhost:5000/signup", {
-      method: "POST",
-      body: JSON.stringify({ email: email, password: password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL as string}/signup`,
+      {
+        method: "POST",
+        body: JSON.stringify({ email: email, password: password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const { success, msg } = await response.json();
 
@@ -50,9 +53,19 @@ export default async function Signup() {
             name="password"
             className="bg-[#131411] rounded-md p-1 pl-2 mb-2 placeholder:text-xs focus:outline-none"
           />
-          <button type="submit" className="bg-[#6366f0] hover:bg-[#5658cf] rounded-md p-2 mt-1 text-white w-[100%] text-xs">Sign Up</button>
+          <button
+            type="submit"
+            className="bg-[#6366f0] hover:bg-[#5658cf] rounded-md p-2 mt-1 text-white w-[100%] text-xs"
+          >
+            Sign Up
+          </button>
         </form>
-        <span className="text-xs m-1">Already had an account? <Link href="/signin" className="text-[#6366f0]">SignIn</Link></span>
+        <span className="text-xs m-1">
+          Already had an account?{" "}
+          <Link href="/signin" className="text-[#6366f0]">
+            SignIn
+          </Link>
+        </span>
       </div>
     </div>
   );

@@ -8,23 +8,24 @@ type props = {
 };
 
 export default function Button({ children, outline }: props) {
-    const router = useRouter();
+  const router = useRouter();
 
   async function logoutUser() {
     try {
-      const response = await fetch("http://localhost:5000/logout", {
-        cache: "no-store",
-        credentials: 'include'
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL as string}/logout`,
+        {
+          cache: "no-store",
+          credentials: "include",
+        }
+      );
 
       const res = await response.json();
-      if(res.success) {
-        router.push('/signin');
+      if (res.success) {
+        router.push("/signin");
+      } else {
+        console.log(res.message);
       }
-      else {
-        console.log(res.message)
-      }
-      
     } catch (error: any) {
       console.log(error.message);
     }

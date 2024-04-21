@@ -15,14 +15,17 @@ export default function SignIn() {
   const router = useRouter();
 
   async function handlesubmit() {
-    const response = await fetch("http://localhost:5000/signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({ email: email, password: password }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL as string}/signin`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ email: email, password: password }),
+      }
+    );
 
     const res = await response.json();
     if (res?.success) {
@@ -38,7 +41,9 @@ export default function SignIn() {
         <h2 className="font-semibold text-2xl">Welcome back</h2>
         <span className="text-xs pb-2 pt-1">Please enter your details</span>
         <div className="flex flex-col p-1">
-          <label htmlFor="email" className="text-xs font-semibold m-1">Email</label>
+          <label htmlFor="email" className="text-xs font-semibold m-1">
+            Email
+          </label>
           <input
             className="bg-[#131411] rounded-md p-1 pl-2 mb-2 placeholder:text-xs focus:outline-none"
             name="email"
@@ -46,7 +51,9 @@ export default function SignIn() {
             placeholder="Enter your email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="password" className="text-xs font-semibold m-1">Password</label>
+          <label htmlFor="password" className="text-xs font-semibold m-1">
+            Password
+          </label>
           <input
             className="bg-[#131411] rounded-md p-1 pl-2 mb-2 placeholder:text-xs focus:outline-none"
             name="password"
@@ -54,11 +61,19 @@ export default function SignIn() {
             placeholder="............"
             onChange={(e) => setpassword(e.target.value)}
           />
-        <button onClick={handlesubmit} className="bg-[#6366f0] hover:bg-[#5658cf] rounded-md p-2 mt-1 text-slate-50 w-[100%] text-xs">
-          Sign In
-        </button>
+          <button
+            onClick={handlesubmit}
+            className="bg-[#6366f0] hover:bg-[#5658cf] rounded-md p-2 mt-1 text-slate-50 w-[100%] text-xs"
+          >
+            Sign In
+          </button>
         </div>
-        <span className="text-xs">Don&apos;t have an account? <Link href="/signup" className="text-[#6366f0]">SignUp</Link></span>
+        <span className="text-xs">
+          Don&apos;t have an account?{" "}
+          <Link href="/signup" className="text-[#6366f0]">
+            SignUp
+          </Link>
+        </span>
       </div>
     </div>
   );

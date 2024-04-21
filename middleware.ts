@@ -7,7 +7,7 @@ async function verify(token: string, secret: string) {
         const {payload} = await jose.jwtVerify(token, new TextEncoder().encode(secret));
         return payload;
     } catch (error: any) {
-        console.log(error.message);
+        console.log('error from jose ' + error.message);
     }
 }
 

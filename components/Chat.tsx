@@ -9,7 +9,7 @@ import { chatId, chatState } from "@/lib/store";
 
 async function getData(input: string, currchatId: string) {
   const response = await fetch(
-    `http://localhost:5000/chat/${currchatId}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL as string}/chat/${currchatId}`,
     {
       method: "POST",
       headers: {
@@ -56,15 +56,15 @@ export default function ChatPage() {
   return (
     <div className="h-screen w-full bg-[#27242c] overflow-y-scroll">
       <div className="relative w-[70%] h-auto ml-[15%] mt-16 mb-[50px]">
-          {chatHistory.map((message, key) => {
-            return (
-              <MessageBox
-                key={key}
-                role={message.role}
-                message={message.message}
-              />
-            );
-          })}
+        {chatHistory.map((message, key) => {
+          return (
+            <MessageBox
+              key={key}
+              role={message.role}
+              message={message.message}
+            />
+          );
+        })}
       </div>
       <div className="sticky bottom-10 top-[600px] w-[70%] ml-[15%] mt-2">
         <input
