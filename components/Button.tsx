@@ -12,6 +12,7 @@ export default function Button({ children, outline }: props) {
 
   async function logoutUser() {
     try {
+      console.log('/logout called');
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_URL as string}/logout`,
         {
